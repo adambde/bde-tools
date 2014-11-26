@@ -391,6 +391,7 @@
 !!  unix-AIX-*-*-gcc    mt       MT_LDFLAGS   =  -lpthread
 !!  unix-Linux-*-*-*    mt       MT_LDFLAGS   =  -lpthread
 !!  unix-Darwin-*-*-*   mt       MT_LDFLAGS   =  -lpthread
+!!  unix-FreeBSD-*-*-*  mt       MT_LDFLAGS   =  -lthr
 
 #===
 
