@@ -171,7 +171,7 @@ def _make_uplid_from_ctx(ctx):
         }
 
     if waf_platform not in osinfo_getters:
-        ctx.fatal('Unsupported platform: %s' % platform)
+        ctx.fatal('Unsupported platform: %s' % waf_platform)
 
     (os_type, os_name, os_ver) = osinfo_getters[waf_platform](ctx)
     (cpu_type, cxx, cxx_version) = _sanitize_comp(
