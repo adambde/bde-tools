@@ -150,12 +150,14 @@ def _make_uplid_from_ctx(ctx):
     waf_platform = Utils.unversioned_sys_platform()
 
     from bdeoptions import get_linux_osinfo
+    from bdeoptions import get_freebsd_osinfo
     from bdeoptions import get_aix_osinfo
     from bdeoptions import get_sunos_osinfo
     from bdeoptions import get_darwin_osinfo
     from bdeoptions import get_windows_osinfo
     osinfo_getters = {
         'linux': get_linux_osinfo,
+        'freebsd':get_freebsd_osinfo,
         'aix': get_aix_osinfo,
         'sunos': get_sunos_osinfo,
         'darwin': get_darwin_osinfo,
@@ -164,6 +166,7 @@ def _make_uplid_from_ctx(ctx):
 
     comp_getters = {
         'linux': _get_linux_comp,
+        'freebsd': _get_freebsd_comp,
         'aix': _get_aix_comp,
         'sunos': _get_sunos_comp,
         'win32': _get_windows_comp,
@@ -236,6 +239,10 @@ def _sanitize_comp(ctx, comp):
 
 
 def _get_linux_comp(ctx):
+    cpu_type = os.uname()[4]
+    return (cpu_type, ctx.env.CXX_NAME, '.'.join(ctx.env.CC_VERSION))
+
+def _get_freebsd_comp(ctx):
     cpu_type = os.uname()[4]
     return (cpu_type, ctx.env.CXX_NAME, '.'.join(ctx.env.CC_VERSION))
 

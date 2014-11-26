@@ -414,6 +414,15 @@ def get_linux_osinfo(ctx):
 
     return (os_type, os_name, os_ver)
 
+def get_freebsd_osinfo(ctx):
+    os_type = 'unix'
+    os_name = 'freebsd'
+    os_ver = os.uname()[2]
+    # os_ver can contain a '-RELEASE' or similar part, strip it
+    os_ver = os_ver.split('-', 1)[0]
+
+    return (os_type, os_name, os_ver)
+
 
 def get_aix_osinfo(ctx):
     os_type = 'unix'
